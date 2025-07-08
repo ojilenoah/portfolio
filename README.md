@@ -1,4 +1,4 @@
-[![MasterHead](portfolio.jpg)](https://noahojile.vercel.app)
+[![MasterHead](client/src/assets/screenshot.jpg)](https://noahojile.vercel.app)
 
 # Noah Ojile – Personal Portfolio
 
