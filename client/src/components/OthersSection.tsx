@@ -79,14 +79,14 @@ export default function OthersSection() {
 
   return (
     <>
-      <section className="mb-2 px-4 py-1">
-        <div className="max-w-7xl mx-auto">
-          <div className="w-full overflow-hidden">
-            <div className="flex gap-3 overflow-x-auto pb-2 pt-2 scrollbar-hide px-4" style={{ justifyContent: others && others.length <= 3 ? 'center' : 'flex-start' }}>
+      <section className="mb-2 px-2 py-1 others-section">
+        <div className="w-full max-w-full mx-auto">
+          <div className="w-full">
+            <div className="flex gap-3 overflow-x-auto pb-2 pt-2 scrollbar-hide px-2 others-scroll-container">
               {others.map((other) => (
                 <Card 
                   key={other.id}
-                  className="w-[320px] h-[160px] cursor-pointer transition-all duration-200 flex-shrink-0 others-card-glow"
+                  className="min-w-[280px] w-[280px] h-[140px] cursor-pointer transition-all duration-200 flex-shrink-0 others-card-glow"
                   onClick={() => handleOtherClick(other.id)}
                 >
                   <CardContent className="p-0 h-full flex flex-col">
