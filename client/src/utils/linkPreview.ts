@@ -126,21 +126,21 @@ export const generateLinkPreview = (url: string, title?: string, description?: s
   switch (type) {
     case 'youtube':
     case 'vimeo':
-      preview.embedUrl = getVideoEmbedUrl(url);
-      preview.image = getVideoThumbnail(url);
+      preview.embedUrl = getVideoEmbedUrl(url) || undefined;
+      preview.image = getVideoThumbnail(url) || undefined;
       preview.isPlayable = true;
       preview.mediaType = 'video';
       break;
       
     case 'twitter':
-      preview.image = getTwitterEmbedPreview(url);
+      preview.image = getTwitterEmbedPreview(url) || undefined;
       preview.mediaType = 'social';
       preview.platform = 'Twitter/X';
       break;
       
     case 'instagram':
-      preview.image = getInstagramEmbedPreview(url);
-      preview.embedUrl = getInstagramEmbedUrl(url);
+      preview.image = getInstagramEmbedPreview(url) || undefined;
+      preview.embedUrl = getInstagramEmbedUrl(url) || undefined;
       preview.isPlayable = true;
       preview.mediaType = 'social';
       preview.platform = 'Instagram';

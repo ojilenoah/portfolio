@@ -117,50 +117,31 @@ export default function LinkPreview({
     );
   }
 
-  // Compact preview for cards - full card is the preview
+  // Compact preview for cards - just the banner image
   return (
-    <Card className={`overflow-hidden ${className} h-full flex flex-col`}>
-      <CardContent className="p-0 flex flex-col h-full">
-        {hasImage ? (
-          <div className="relative flex-1">
-            <img
-              src={preview.image}
-              alt={preview.title}
-              className="w-full h-48 object-cover"
-              onError={handleImageError}
-            />
-            {isPlayable && (
-              <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-                <Play className="h-12 w-12 text-white" />
-              </div>
-            )}
-            <div className="absolute top-2 right-2">
-              <Badge variant="secondary" className="text-xs">
-                {preview.category}
-              </Badge>
+    <div className={`overflow-hidden ${className} h-full w-full`}>
+      {hasImage ? (
+        <div className="relative h-full w-full">
+          <img
+            src={preview.image}
+            alt={preview.title}
+            className="w-full h-full object-cover"
+            onError={handleImageError}
+          />
+          {isPlayable && (
+            <div className="absolute inset-0 bg-black/40 flex items-center justify-center hover:bg-black/30 transition-colors">
+              <Play className="h-8 w-8 text-white" />
             </div>
-          </div>
-        ) : (
-          <div className="h-48 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 flex items-center justify-center relative flex-1">
-            <div className="text-center">
-              <div className="text-4xl mb-2">{getPlatformIcon(preview.type)}</div>
-              <div className="text-sm text-muted-foreground">{preview.platform || 'Link'}</div>
-            </div>
-            <div className="absolute top-2 right-2">
-              <Badge variant="secondary" className="text-xs">
-                {preview.category}
-              </Badge>
-            </div>
-          </div>
-        )}
-        
-        <div className="p-4 bg-card mt-auto">
-          <h4 className="font-semibold text-base line-clamp-2 mb-2">{preview.title}</h4>
-          {preview.description && (
-            <p className="text-sm text-muted-foreground line-clamp-3">{preview.description}</p>
           )}
         </div>
-      </CardContent>
-    </Card>
+      ) : (
+        <div className="h-full w-full bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 flex items-center justify-center">
+          <div className="text-center">
+            <div className="text-2xl mb-1">{getPlatformIcon(preview.type)}</div>
+            <div className="text-xs text-muted-foreground">{preview.platform || preview.type}</div>
+          </div>
+        </div>
+      )}
+    </div>
   );
 }
