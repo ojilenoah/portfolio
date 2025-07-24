@@ -190,6 +190,8 @@ Changelog:
   * Cards now display link preview images as banners with proper aspect ratios
   * Improved responsive design with horizontal scrolling when screen width is exhausted
   * Fixed TypeScript errors in LinkPreview utility for better type safety
+  * Restored horizontal rectangular card layout (320px x 160px) with left-side banner images
+  * Type badges remain visible and properly colored for different item categories
 ```
 
 ## User Preferences

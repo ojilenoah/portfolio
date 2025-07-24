@@ -60,8 +60,8 @@ export default function OthersSection() {
 
   const truncateDescription = (description: string, maxLines: number = 2) => {
     const words = description.split(' ');
-    // Approximate 8-10 words per line for smaller cards
-    const maxWords = maxLines * 8;
+    // Approximate 10-12 words per line for horizontal cards
+    const maxWords = maxLines * 12;
     if (words.length > maxWords) {
       return words.slice(0, maxWords).join(' ') + '...';
     }
@@ -85,12 +85,12 @@ export default function OthersSection() {
               {others.map((other) => (
                 <Card 
                   key={other.id}
-                  className="w-[200px] h-[280px] cursor-pointer transition-all duration-200 flex-shrink-0 others-card-glow"
+                  className="w-[320px] h-[160px] cursor-pointer transition-all duration-200 flex-shrink-0 others-card-glow"
                   onClick={() => handleOtherClick(other.id)}
                 >
-                  <CardContent className="p-0 h-full flex flex-col">
+                  <CardContent className="p-0 h-full flex flex-row">
                     {/* 9:16 Banner Image */}
-                    <div className="w-full h-[140px] bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 rounded-t-lg overflow-hidden">
+                    <div className="w-[90px] h-full bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 rounded-l-lg overflow-hidden">
                       <LinkPreview 
                         url={other.link || ''} 
                         title={other.title}
@@ -101,15 +101,15 @@ export default function OthersSection() {
                     </div>
                     
                     {/* Content */}
-                    <div className="p-3 flex-1 flex flex-col justify-between">
+                    <div className="p-4 flex-1 flex flex-col justify-between">
                       <div>
                         <div className="flex items-start justify-between mb-2">
-                          <h3 className="font-semibold text-sm leading-tight line-clamp-1 flex-1 pr-1">{other.title}</h3>
+                          <h3 className="font-semibold text-base leading-tight line-clamp-1 flex-1 pr-2">{other.title}</h3>
                           <Badge className={`flex-shrink-0 text-xs ${getTypeColor(other.item_type)}`}>
                             {other.item_type}
                           </Badge>
                         </div>
-                        <p className="text-xs text-muted-foreground leading-relaxed line-clamp-3">
+                        <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">
                           {truncateDescription(other.description, 3)}
                         </p>
                       </div>
