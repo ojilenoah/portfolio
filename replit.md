@@ -196,6 +196,9 @@ Changelog:
   * Updated admin dashboard to include optional card image URL field when creating/editing Others
   * Cards now prioritize direct image URLs over markdown-extracted images with fallback support
   * Frosted glass type tags overlay on top-left corner of banner images with backdrop blur effect
+  * Implemented center-justified layout with proper scrolling to both ends without edge clipping
+  * Replaced glowing borders with clean normal borders on hover for professional appearance
+  * Added smooth padding and spacing for optimal horizontal scrolling experience
 ```
 
 ## User Preferences

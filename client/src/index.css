@@ -1166,17 +1166,20 @@
     display: none;
   }
 
-  /* Others card glow animation */
+  /* Others card hover animation */
   .others-card-glow {
     transition: all 0.3s ease;
+    border: 1px solid transparent;
   }
 
   .others-card-glow:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
 
   :root[data-theme="light"] .others-card-glow:hover {
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   }
 }
