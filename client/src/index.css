@@ -403,7 +403,7 @@
   body {
     margin: 0;
     padding: 0;
-    @apply antialiased bg-background text-foreground;
+    @apply antialiased bg-background text-foreground min-h-screen;
     font-family: 'Inter', sans-serif;
     transition: background-color 0.3s ease, color 0.3s ease;
     position: relative;
@@ -653,22 +653,7 @@
   }
 }
 
-/* Define core utility classes outside of layer to ensure they're available for body classes */
-.bg-dark {
-  background-color: #121212;
-}
-
-.text-white {
-  color: #FFFFFF;
-}
-
-.bg-light {
-  background-color: #F8F9FA;
-}
-
-.text-dark-gray {
-  color: #1A1A1A;
-}
+/* Removed fixed body classes that were breaking responsive utilities */
 
 @layer utilities {
   /* Modern UI utility classes - Dark Theme */
@@ -1160,5 +1145,15 @@
   :root[data-theme="light"] .others-card-glow:hover {
     border: 1px solid rgba(0, 0, 0, 0.1);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  /* Prevent horizontal viewport expansion */
+  .others-section {
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+  
+  .others-scroll-container {
+    max-width: calc(100vw - 2rem);
   }
 }
