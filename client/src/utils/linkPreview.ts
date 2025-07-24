@@ -101,7 +101,18 @@ export const getVideoThumbnail = (url: string): string | null => {
 export const extractImageFromMarkdown = (markdownContent?: string): string | null => {
   if (!markdownContent) return null;
   
-  // Look for image syntax ![alt](url) or ![alt](url "title")
+  // Look for linked image syntax [![alt](image-url)](link-url) - this captures banner images
+  const linkedImageRegex = /\[\!\[.*?\]\((.*?)(?:\s+".*?")?\)\]\(.*?\)/;
+  const linkedMatch = markdownContent.match(linkedImageRegex);
+  
+  if (linkedMatch && linkedMatch[1]) {
+    const imageUrl = linkedMatch[1].trim();
+    if (imageUrl.startsWith('http') || imageUrl.startsWith('/') || imageUrl.startsWith('./')) {
+      return imageUrl;
+    }
+  }
+  
+  // Fallback to regular image syntax ![alt](url) or ![alt](url "title")
   const imageRegex = /!\[.*?\]\((.*?)(?:\s+".*?")?\)/;
   const match = markdownContent.match(imageRegex);
   
