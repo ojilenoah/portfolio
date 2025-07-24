@@ -1153,4 +1153,30 @@
       transform: translateX(0%);
     }
   }
+
+  /* Others section scrolling improvements */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+    scroll-padding: 1rem;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Others card glow animation */
+  .others-card-glow {
+    transition: all 0.3s ease;
+  }
+
+  .others-card-glow:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  }
+
+  :root[data-theme="light"] .others-card-glow:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  }
 }

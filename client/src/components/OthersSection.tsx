@@ -81,8 +81,8 @@ export default function OthersSection() {
     <>
       <section className="mb-2 px-4 py-1">
         <div className="max-w-7xl mx-auto">
-          <div className="flex justify-center items-center">
-            <div className="flex gap-3 overflow-x-auto pb-2 pt-2 scrollbar-hide justify-center">
+          <div className="w-full overflow-hidden">
+            <div className="flex gap-3 overflow-x-auto pb-2 pt-2 scrollbar-hide px-4" style={{ justifyContent: others && others.length <= 3 ? 'center' : 'flex-start' }}>
               {others.map((other) => (
                 <Card 
                   key={other.id}
@@ -134,6 +134,8 @@ export default function OthersSection() {
                   </CardContent>
                 </Card>
               ))}
+              {/* Add padding at the end for better scrolling */}
+              <div className="flex-shrink-0 w-4"></div>
             </div>
           </div>
         </div>
