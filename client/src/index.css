@@ -285,28 +285,7 @@
     padding-left: 0.5714286em;
   }
 
-  /* RGB Border Animation for Others Cards - Dimmer and slower */
-  @keyframes rgb-border-glow {
-    0% { border-color: rgba(255, 0, 0, 0.4); }
-    16.66% { border-color: rgba(255, 136, 0, 0.4); }
-    33.33% { border-color: rgba(255, 255, 0, 0.4); }
-    50% { border-color: rgba(0, 255, 0, 0.4); }
-    66.66% { border-color: rgba(0, 136, 255, 0.4); }
-    83.33% { border-color: rgba(136, 0, 255, 0.4); }
-    100% { border-color: rgba(255, 0, 0, 0.4); }
-  }
 
-  .others-card-glow {
-    position: relative;
-    transition: all 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  .others-card-glow:hover {
-    animation: rgb-border-glow 4s linear infinite;
-    border-width: 1px;
-    z-index: 10;
-  }
   
   /*********************************************************
    * DARK THEME - Modern UI Theme (Deep charcoal with teal accents)
