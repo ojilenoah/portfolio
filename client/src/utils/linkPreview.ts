@@ -97,7 +97,26 @@ export const getVideoThumbnail = (url: string): string | null => {
   return null;
 };
 
-export const generateLinkPreview = (url: string, title?: string, description?: string, itemType?: string): LinkPreview => {
+// Extract first image from markdown content
+export const extractImageFromMarkdown = (markdownContent?: string): string | null => {
+  if (!markdownContent) return null;
+  
+  // Look for image syntax ![alt](url) or ![alt](url "title")
+  const imageRegex = /!\[.*?\]\((.*?)(?:\s+".*?")?\)/;
+  const match = markdownContent.match(imageRegex);
+  
+  if (match && match[1]) {
+    const imageUrl = match[1].trim();
+    // Check if it's a valid URL or relative path
+    if (imageUrl.startsWith('http') || imageUrl.startsWith('/') || imageUrl.startsWith('./')) {
+      return imageUrl;
+    }
+  }
+  
+  return null;
+};
+
+export const generateLinkPreview = (url: string, title?: string, description?: string, itemType?: string, markdownContent?: string): LinkPreview => {
   // Handle case where no URL is provided
   if (!url || url === '#') {
     return {
@@ -121,6 +140,12 @@ export const generateLinkPreview = (url: string, title?: string, description?: s
     description: description || getDefaultDescription(type),
     category: itemType || 'other'
   };
+
+  // First try to extract image from markdown content
+  const markdownImage = extractImageFromMarkdown(markdownContent);
+  if (markdownImage) {
+    preview.image = markdownImage;
+  }
   
   // Add platform-specific data
   switch (type) {

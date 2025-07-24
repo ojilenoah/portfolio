@@ -12,6 +12,7 @@ interface LinkPreviewProps {
   className?: string;
   showFullPreview?: boolean;
   itemType?: string;
+  markdownContent?: string;
 }
 
 export default function LinkPreview({ 
@@ -20,17 +21,18 @@ export default function LinkPreview({
   description, 
   className = '',
   showFullPreview = false,
-  itemType = 'other'
+  itemType = 'other',
+  markdownContent
 }: LinkPreviewProps) {
   const [preview, setPreview] = useState<LinkPreviewType | null>(null);
   const [imageError, setImageError] = useState(false);
 
   useEffect(() => {
-    if (url) {
-      const linkPreview = generateLinkPreview(url, title, description, itemType);
+    if (url || markdownContent) {
+      const linkPreview = generateLinkPreview(url, title, description, itemType, markdownContent);
       setPreview(linkPreview);
     }
-  }, [url, title, description, itemType]);
+  }, [url, title, description, itemType, markdownContent]);
 
   if (!preview) return null;
 

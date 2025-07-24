@@ -88,29 +88,31 @@ export default function OthersSection() {
                   className="w-[320px] h-[160px] cursor-pointer transition-all duration-200 flex-shrink-0 others-card-glow"
                   onClick={() => handleOtherClick(other.id)}
                 >
-                  <CardContent className="p-0 h-full flex flex-row">
-                    {/* 9:16 Banner Image */}
-                    <div className="w-[90px] h-full bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 rounded-l-lg overflow-hidden">
+                  <CardContent className="p-0 h-full flex flex-col">
+                    {/* Banner Image with Frosted Glass Tag */}
+                    <div className="w-full h-[100px] bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 rounded-t-lg overflow-hidden relative">
                       <LinkPreview 
                         url={other.link || ''} 
                         title={other.title}
                         description={other.description}
                         itemType={other.item_type}
+                        markdownContent={other.markdown_content}
                         className="w-full h-full rounded-none"
                       />
+                      {/* Frosted Glass Tag */}
+                      <div className="absolute top-2 left-2">
+                        <Badge className={`text-xs backdrop-blur-sm bg-white/20 dark:bg-black/20 border border-white/30 dark:border-white/20 ${getTypeColor(other.item_type)} shadow-lg`}>
+                          {other.item_type}
+                        </Badge>
+                      </div>
                     </div>
                     
                     {/* Content */}
-                    <div className="p-4 flex-1 flex flex-col justify-between">
+                    <div className="p-3 flex-1 flex flex-col justify-between">
                       <div>
-                        <div className="flex items-start justify-between mb-2">
-                          <h3 className="font-semibold text-base leading-tight line-clamp-1 flex-1 pr-2">{other.title}</h3>
-                          <Badge className={`flex-shrink-0 text-xs ${getTypeColor(other.item_type)}`}>
-                            {other.item_type}
-                          </Badge>
-                        </div>
-                        <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">
-                          {truncateDescription(other.description, 3)}
+                        <h3 className="font-semibold text-base leading-tight line-clamp-1 mb-2">{other.title}</h3>
+                        <p className="text-sm text-muted-foreground leading-relaxed line-clamp-2">
+                          {truncateDescription(other.description, 2)}
                         </p>
                       </div>
                     </div>
