@@ -192,6 +192,10 @@ Changelog:
   * Fixed TypeScript errors in LinkPreview utility for better type safety
   * Restored horizontal rectangular card layout (320px x 160px) with left-side banner images
   * Type badges remain visible and properly colored for different item categories
+  * Added card_image database column for direct image URL specification in Others items
+  * Updated admin dashboard to include optional card image URL field when creating/editing Others
+  * Cards now prioritize direct image URLs over markdown-extracted images with fallback support
+  * Frosted glass type tags overlay on top-left corner of banner images with backdrop blur effect
 ```
 
 ## User Preferences

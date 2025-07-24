@@ -22,6 +22,7 @@ interface Other {
   link?: string;
   item_type: string;
   markdown_content?: string;
+  card_image?: string;
   sort_order: number;
   created_at: string;
   updated_at: string;
@@ -37,6 +38,7 @@ export default function OthersManager() {
     link: '',
     item_type: '',
     markdown_content: '',
+    card_image: '',
     sort_order: 0,
   });
 
@@ -63,6 +65,7 @@ export default function OthersManager() {
       link: '',
       item_type: '',
       markdown_content: '',
+      card_image: '',
       sort_order: 0,
     });
     setEditingOther(null);
@@ -192,6 +195,7 @@ export default function OthersManager() {
       link: other.link || '',
       item_type: other.item_type,
       markdown_content: other.markdown_content || '',
+      card_image: other.card_image || '',
       sort_order: other.sort_order,
     });
     setIsDialogOpen(true);
@@ -300,6 +304,18 @@ export default function OthersManager() {
                   onChange={(e) => setFormData({ ...formData, link: e.target.value })}
                   placeholder="https://example.com"
                 />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="card_image">Card Image URL (Optional)</Label>
+                <Input
+                  id="card_image"
+                  type="url"
+                  value={formData.card_image}
+                  onChange={(e) => setFormData({ ...formData, card_image: e.target.value })}
+                  placeholder="https://example.com/image.jpg"
+                />
+                <p className="text-xs text-muted-foreground">Image URL to display in the card banner. If not provided, will attempt to extract from markdown content.</p>
               </div>
 
               <div className="space-y-2">

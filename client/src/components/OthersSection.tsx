@@ -14,6 +14,7 @@ interface Other {
   link?: string;
   item_type: string;
   markdown_content?: string;
+  card_image?: string;
   sort_order: number;
   created_at: string;
   updated_at: string;
@@ -91,14 +92,28 @@ export default function OthersSection() {
                   <CardContent className="p-0 h-full flex flex-col">
                     {/* Banner Image with Frosted Glass Tag */}
                     <div className="w-full h-[100px] bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 rounded-t-lg overflow-hidden relative">
-                      <LinkPreview 
-                        url={other.link || ''} 
-                        title={other.title}
-                        description={other.description}
-                        itemType={other.item_type}
-                        markdownContent={other.markdown_content}
-                        className="w-full h-full rounded-none"
-                      />
+                      {other.card_image ? (
+                        <img 
+                          src={other.card_image} 
+                          alt={other.title}
+                          className="w-full h-full object-cover"
+                          onError={(e) => {
+                            // Fallback to LinkPreview if image fails to load
+                            e.currentTarget.style.display = 'none';
+                            e.currentTarget.nextElementSibling?.setAttribute('style', 'display: block');
+                          }}
+                        />
+                      ) : null}
+                      <div style={{ display: other.card_image ? 'none' : 'block' }}>
+                        <LinkPreview 
+                          url={other.link || ''} 
+                          title={other.title}
+                          description={other.description}
+                          itemType={other.item_type}
+                          markdownContent={other.markdown_content}
+                          className="w-full h-full rounded-none"
+                        />
+                      </div>
                       {/* Frosted Glass Tag */}
                       <div className="absolute top-2 left-2">
                         <Badge className={`text-xs backdrop-blur-sm bg-white/20 dark:bg-black/20 border border-white/30 dark:border-white/20 ${getTypeColor(other.item_type)} shadow-lg`}>

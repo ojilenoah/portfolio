@@ -75,6 +75,7 @@ export interface DatabaseOther {
   link?: string;
   item_type: string;
   markdown_content?: string;
+  card_image?: string;
   sort_order: number;
   created_at: string;
   updated_at: string;
