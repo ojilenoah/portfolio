@@ -73,7 +73,8 @@ export interface DatabaseOther {
   title: string;
   description: string;
   link?: string;
-  item_type: 'other' | 'tool' | 'resource' | 'tutorial' | 'template';
+  item_type: string;
+  markdown_content?: string;
   sort_order: number;
   created_at: string;
   updated_at: string;
